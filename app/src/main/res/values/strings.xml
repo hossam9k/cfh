@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CFH</string>
+    <string name="error_message">Error, %s!</string>
+    <string name="retry">retry</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+</resources>
