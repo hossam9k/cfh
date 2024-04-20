@@ -17,7 +17,7 @@ import com.example.cfh.ui.theme.CFHTheme
 import com.example.cfh.util.PreferencesManager
 
 @Composable
-fun DrawerCompose(
+fun MainCFHCompose(
     navController: NavHostController = rememberNavController(),
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
 ) {

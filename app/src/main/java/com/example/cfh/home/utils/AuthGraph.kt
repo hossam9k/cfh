@@ -10,7 +10,7 @@ import com.example.cfh.auth.register.presentation.RegisterScreen
 
 fun NavGraphBuilder.introGraph(navController: NavController) {
     navigation(
-        startDestination = IntroNavOption.LoginScreen.name,
+        startDestination = IntroNavOption.RegisterScreen.name,
         route = NavRoutes.AuthRoute.name
     ) {
         composable(IntroNavOption.LoginScreen.name) {

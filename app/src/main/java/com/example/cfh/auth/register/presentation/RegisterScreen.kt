@@ -15,6 +15,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.PedalBike
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.RemoveRedEye
 import androidx.compose.material.icons.filled.VpnKey
 import androidx.compose.runtime.Composable
@@ -190,7 +192,7 @@ fun RegisterContainer(
                 .fillMaxWidth(),
             description = "First name",
             hint = "First name",
-            leadingIcon = Icons.Default.Email,
+            leadingIcon = Icons.Default.Person,
             textValue = firstnameValue(),
             textColor = gray,
             cursorColor = orange,
@@ -204,7 +206,7 @@ fun RegisterContainer(
                 .fillMaxWidth(),
             description = "Last name",
             hint = "Last name",
-            leadingIcon = Icons.Default.Email,
+            leadingIcon = Icons.Default.Person,
             textValue = lastnameValue(),
             textColor = gray,
             cursorColor = orange,
@@ -218,13 +220,14 @@ fun RegisterContainer(
                 .fillMaxWidth(),
             description = "Age",
             hint = "Age",
-            leadingIcon = Icons.Default.Email,
+            leadingIcon = Icons.Default.PedalBike,
             textValue = ageValue(),
             textColor = gray,
             cursorColor = orange,
             onValueChanged = onAgeChanged,
             trailingIcon = null,
-            onTrailingIconClick = null
+            onTrailingIconClick = null,
+            keyboardType = KeyboardType.Number
         )
 
         TextEntryModule(

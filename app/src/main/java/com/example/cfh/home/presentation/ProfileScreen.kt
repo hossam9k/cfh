@@ -1,5 +1,6 @@
 package com.example.cfh.home.presentation
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -8,11 +9,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.material3.DrawerState
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -20,8 +22,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.example.cfh.home.utils.AppBar
 import com.example.cfh.util.PreferencesManager
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ProfileScreen(
     drawerState: DrawerState,
@@ -32,25 +36,31 @@ fun ProfileScreen(
 
     val preferencesManager = remember { PreferencesManager(context) }
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        BoxWithConstraints(modifier = Modifier.weight(1f)) {
-            Surface {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .verticalScroll(scrollState),
-                ) {
-                    ProfileContent(
-                        preferencesManager.getData("firstname", "firstname"),
-                        preferencesManager.getData("lastname", "lastname"),
-                        preferencesManager.getData("age", "age"),
-                        preferencesManager.getData("email", "email"),
-                        this@BoxWithConstraints.maxHeight
-                    )
+    Scaffold(
+        topBar = { AppBar(drawerState = drawerState) }
+    ) {
+        Column(modifier = Modifier.fillMaxSize()) {
+            BoxWithConstraints(modifier = Modifier.weight(1f)) {
+                Surface {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .verticalScroll(scrollState),
+                    ) {
+                        ProfileContent(
+                            preferencesManager.getData("firstname", "firstname"),
+                            preferencesManager.getData("lastname", "lastname"),
+                            preferencesManager.getData("age", "age"),
+                            preferencesManager.getData("email", "email"),
+                            this@BoxWithConstraints.maxHeight
+                        )
+                    }
                 }
             }
         }
     }
+
+
 }
 
 @Composable
@@ -83,7 +93,7 @@ private fun Name(name: String, modifier: Modifier = Modifier) {
     Text(
         text = name,
         modifier = modifier,
-        style = MaterialTheme.typography.h5,
+        style = MaterialTheme.typography.bodyMedium,
         fontWeight = FontWeight.Bold
     )
 }
@@ -91,9 +101,9 @@ private fun Name(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun ProfileProperty(label: String) {
     Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp)) {
-        Divider()
+        HorizontalDivider()
 
-        val style = MaterialTheme.typography.body1
+        val style = MaterialTheme.typography.bodyMedium
 
         Text(
             text = label,
